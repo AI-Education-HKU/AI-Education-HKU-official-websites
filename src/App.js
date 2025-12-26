@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+// 直接引入页面组件，不再依赖 router/index.jsx
+import Home from './pages/Home';
+import About from './pages/About';
+import Team from './pages/Team';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      {/* 关键：BrowserRouter 包裹整个应用，提供路由上下文 */}
+      <BrowserRouter>
+        <Header />
+        {/* 路由规则配置 */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/contact" element={<Home />} />
+          {/* 404 页面 */}
+          <Route path="*" element={
+            <div className="page-wrapper container">
+              <h1>404 - 页面未找到</h1>
+              <p>你访问的页面不存在，请返回首页</p>
+              <a href="/" className="btn-apple">返回首页</a>
+            </div>
+          } />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

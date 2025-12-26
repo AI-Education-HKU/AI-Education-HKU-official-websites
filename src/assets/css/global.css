@@ -1,0 +1,126 @@
+/* 苹果官网风格 - 全局基础样式 */
+:root {
+  /* 苹果官网核心配色 */
+  --apple-white: #ffffff;          /* 主背景 */
+  --apple-black: #1d1d1f;          /* 主文字 */
+  --apple-gray-light: #86868b;     /* 辅助文字 */
+  --apple-gray: #6e6e73;           /* 分隔线/次要元素 */
+  --apple-gray-dark: #3a3a3c;      /* 深色背景 */
+  --apple-blue: #0071e3;           /* 强调色（按钮/链接） */
+  --apple-blue-hover: #0077ed;     /* 按钮hover */
+  --apple-border: #e6e6e6;         /* 轻量边框 */
+
+  /* 间距规范（苹果官网统一间距） */
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 64px;
+
+  /* 字体大小 */
+  --font-xs: 12px;
+  --font-sm: 14px;
+  --font-md: 17px;
+  --font-lg: 24px;
+  --font-xl: 32px;
+  --font-xxl: 48px;
+}
+
+/* 全局重置 + 基础样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "PingFang SC", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--apple-white);
+  color: var(--apple-black);
+  font-size: var(--font-md);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased; /* 苹果端字体抗锯齿 */
+}
+
+/* 文字层级（贴合苹果官网排版） */
+h1 {
+  font-size: var(--font-xxl);
+  font-weight: 300; /* 苹果标题用轻字重 */
+  line-height: 1.2;
+  color: var(--apple-black);
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: var(--font-xl);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--apple-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+  font-size: var(--font-lg);
+  font-weight: 400;
+  color: var(--apple-black);
+  margin-bottom: var(--spacing-xs);
+}
+
+p {
+  font-size: var(--font-md);
+  color: var(--apple-gray-light);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* 链接样式（苹果风格） */
+a {
+  color: var(--apple-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--apple-blue-hover);
+  text-decoration: underline;
+}
+
+/* 按钮样式（苹果官网按钮） */
+.btn-apple {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--apple-blue);
+  color: var(--apple-white);
+  border-radius: 9999px; /* 全圆角，苹果风格 */
+  font-size: var(--font-sm);
+  font-weight: 400;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-apple:hover {
+  background-color: var(--apple-blue-hover);
+  text-decoration: none;
+}
+
+/* 容器（居中+最大宽度，贴合苹果官网布局） */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+/* 通用分隔线 */
+.divider {
+  height: 1px;
+  background-color: var(--apple-border);
+  margin: var(--spacing-lg) 0;
+}
+
+/* 页面通用外层容器 */
+.page-wrapper {
+  padding: var(--spacing-xl) 0;
+}

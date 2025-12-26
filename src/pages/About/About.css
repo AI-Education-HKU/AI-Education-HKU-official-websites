@@ -1,0 +1,64 @@
+/* About 页面专属样式 */
+.about-header {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.about-header h1 {
+  font-size: var(--font-xxl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-sm);
+}
+
+.about-header p {
+  font-size: var(--font-lg);
+  color: var(--apple-gray-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-intro {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl) auto;
+  line-height: 1.8;
+}
+
+.about-intro h2 {
+  font-size: var(--font-xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--apple-black);
+}
+
+.about-intro p {
+  font-size: var(--font-md);
+  color: var(--apple-gray-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-values h2 {
+  font-size: var(--font-xl);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.values-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.value-item {
+  padding: var(--spacing-md);
+  text-align: center;
+}
+
+.value-item h3 {
+  font-size: var(--font-lg);
+  margin-bottom: var(--spacing-sm);
+  color: var(--apple-black);
+}
+
+.value-item p {
+  font-size: var(--font-sm);
+  color: var(--apple-gray-light);
+  line-height: 1.6;
+}

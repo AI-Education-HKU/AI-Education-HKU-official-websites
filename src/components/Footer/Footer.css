@@ -1,0 +1,27 @@
+/* src/components/Footer/Footer.css */
+.apple-footer {
+  background-color: var(--apple-white);
+  border-top: 1px solid var(--apple-border);
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-xxl);
+}
+
+.footer-content {
+  text-align: center;
+}
+
+.footer-text {
+  font-size: var(--font-xs);
+  color: var(--apple-gray);
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-link a {
+  font-size: var(--font-xs);
+  color: var(--apple-gray);
+  margin: 0 var(--spacing-xs);
+}
+
+.footer-link a:hover {
+  color: var(--apple-blue);
+}

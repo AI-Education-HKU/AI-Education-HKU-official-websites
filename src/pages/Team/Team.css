@@ -1,0 +1,84 @@
+/* Team 页面专属样式 */
+.team-header {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.team-header h1 {
+  font-size: var(--font-xxl);
+  font-weight: 300;
+  margin-bottom: var(--spacing-sm);
+}
+
+.team-header p {
+  font-size: var(--font-lg);
+  color: var(--apple-gray-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.team-members {
+  margin: var(--spacing-xl) 0;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+}
+
+.member-card {
+  text-align: center;
+  padding: var(--spacing-md);
+  transition: transform 0.2s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-5px); /* 轻微上浮，苹果风格的柔和交互 */
+}
+
+.member-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* 圆形头像，苹果风格 */
+  margin-bottom: var(--spacing-md);
+  object-fit: cover;
+  border: 1px solid var(--apple-border);
+}
+
+.member-card h3 {
+  font-size: var(--font-lg);
+  color: var(--apple-black);
+  margin-bottom: var(--spacing-xs);
+}
+
+.member-role {
+  font-size: var(--font-sm);
+  color: var(--apple-blue); /* 用苹果蓝突出职位 */
+  margin-bottom: var(--spacing-sm);
+  font-weight: 400;
+}
+
+.member-desc {
+  font-size: var(--font-xs);
+  color: var(--apple-gray-light);
+  line-height: 1.6;
+}
+
+.team-idea {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+}
+
+.team-idea h2 {
+  font-size: var(--font-xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--apple-black);
+}
+
+.team-idea p {
+  font-size: var(--font-md);
+  color: var(--apple-gray-light);
+  line-height: 1.8;
+}

@@ -1,0 +1,45 @@
+/* src/components/Header/Header.css */
+.apple-header {
+  background-color: var(--apple-white);
+  border-bottom: 1px solid var(--apple-border);
+  padding: var(--spacing-sm) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100; /* 固定在顶部 */
+
+}
+
+.apple-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo a {
+  font-size: var(--font-lg);
+  font-weight: 400;
+  color: var(--apple-black);
+  text-decoration: none;
+}
+
+.header-logo a:hover {
+  color: var(--apple-blue);
+  text-decoration: none;
+}
+
+.header-nav {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.header-nav a {
+  font-size: var(--font-sm);
+  color: var(--apple-gray-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: var(--apple-blue);
+  text-decoration: none;
+}

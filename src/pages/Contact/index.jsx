@@ -1,12 +1,11 @@
-// src/pages/Home/index.jsx
-import './Home.css';
+// src/pages/Contact/index.jsx
+import './Contact.css';
 
-const Home = () => {
-
+const Contact = () => {
   return (
     <div className="page-wrapper">
       <div className="container">
-        {/* 动态背景层 */}
+        {/* 动态背景层 - 与 Home 一致 */}
         <div className="hero-background">
           <div className="animated-gradient"></div>
           
@@ -61,62 +60,41 @@ const Home = () => {
         </div>
 
         {/* Hero 区域 */}
-        <section className="home-hero">
-          <div className="hero-inner">
-            {/* 主标题 */}
-            <h1>智启教育 · 数智未来</h1>
+        <section className="contact-hero">
+          <h1>联系我们</h1>
+          <p className="hero-subtitle">随时为你解答疑问，期待与你合作</p>
+        </section>
+
+        {/* 联系人卡片 */}
+        <section className="contact-card-section">
+          <div className="contact-card">
+            <div className="contact-avatar">
+              <img src="/avatars/Henry.jpg" alt="Henry" />
+            </div>
             
-            {/* 副标题 */}
-            <p className="hero-subtitle">
-              AI Education 团队 | 以人工智能重构教育体验，让学习更高效、更个性化
-            </p>
-            
-            {/* 按钮 */}
-            <div className="cta-buttons">
-              <button className="btn-primary">
-                <span className="btn-text">探索 AI 教育解决方案</span>
-                <span className="btn-icon">→</span>
-                <span className="btn-shine"></span>
-              </button>
+            <div className="contact-info">
+              <h2>Henry</h2>
+              <p className="contact-role">创始人 / 前端架构师</p>
+              <p className="contact-desc">
+                欢迎随时联系我。关于产品咨询、合作洽谈、技术交流，我都会尽快回复。
+              </p>
+              
+              <div className="contact-email">
+                <span className="email-icon">✉️</span>
+                <a href="mailto:henrytojob@gmail.com">henrytojob@gmail.com</a>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* 核心理念区域 */}
-        <section className="home-features">
-          <h2>我们的核心理念</h2>
-          <div className="features-list">
-            {/* 卡片1 */}
-            <div className="feature-item">
-              <span className="corner-tl"></span>
-              <span className="corner-br"></span>
-              <div className="icon-wrapper">🤖</div>
-              <h3>AI 驱动教学</h3>
-              <p>基于大模型与自适应学习算法，为每位学习者定制专属路径</p>
-            </div>
-            
-            {/* 卡片2 */}
-            <div className="feature-item">
-              <span className="corner-tl"></span>
-              <span className="corner-br"></span>
-              <div className="icon-wrapper">✨</div>
-              <h3>极简交互体验</h3>
-              <p>遵循苹果设计范式，让复杂的 AI 教育功能，拥有极致简洁的操作体验</p>
-            </div>
-            
-            {/* 卡片3 */}
-            <div className="feature-item">
-              <span className="corner-tl"></span>
-              <span className="corner-br"></span>
-              <div className="icon-wrapper">🎯</div>
-              <h3>团队共创价值</h3>
-              <p>技术、教育、设计多方协同，打造有温度的 AI 教育产品</p>
-            </div>
-          </div>
+        {/* 工作时间提示 */}
+        <section className="contact-footer">
+          <p className="work-time">工作时间：周一至周五 9:00-18:00（法定节假日除外）</p>
+          <p className="reply-info">一般情况下，我们会在1-2个工作日内回复您的邮件</p>
         </section>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Contact;

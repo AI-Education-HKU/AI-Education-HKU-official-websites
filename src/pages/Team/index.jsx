@@ -1,12 +1,13 @@
+// src/pages/Team/index.jsx
 import './Team.css';
 
-// 团队成员数据（可后续替换为真实信息）
+// 团队成员数据
 const teamMembers = [
   {
     name: "Henry",
     role: "创始人 / 前端架构师",
     desc: "10年React开发经验，曾任职于一线互联网公司，专注前端性能优化与组件化设计",
-    avatar: "/avatars/Henry.jpg" // 占位图，后续替换为真实头像
+    avatar: "/avatars/Henry.jpg"
   },
   {
     name: "李丽",
@@ -44,34 +45,86 @@ const Team = () => {
   return (
     <div className="page-wrapper">
       <div className="container">
-        {/* 页面头部 */}
+        
+        {/* ✅ 添加背景层 - 与 Home 一致 */}
+        <div className="hero-background">
+          <div className="animated-gradient"></div>
+          
+          <div className="floating-shapes">
+            <div className="shape shape-1"></div>
+            <div className="shape shape-2"></div>
+            <div className="shape shape-3"></div>
+            <div className="shape shape-4"></div>
+            <div className="shape shape-5"></div>
+            <div className="shape shape-6"></div>
+            <div className="shape shape-7"></div>
+          </div>
+          
+          <div className="wave-container wave-bottom">
+            <svg className="wave-svg" viewBox="0 0 1440 150" preserveAspectRatio="none">
+              <path className="wave-path wave-3" d="M0,80 C240,120 480,40 720,80 C960,120 1200,40 1440,80 L1440,150 L0,150 Z" />
+              <path className="wave-path wave-4" d="M0,100 C240,60 480,140 720,100 C960,60 1200,140 1440,100 L1440,150 L0,150 Z" />
+            </svg>
+          </div>
+          
+          <div className="particles-container">
+            {[...Array(20)].map((_, i) => (
+              <div key={i} className="particle" style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${15 + Math.random() * 10}s`
+              }}></div>
+            ))}
+          </div>
+          
+          <div className="light-beams">
+            <div className="beam beam-1"></div>
+            <div className="beam beam-2"></div>
+            <div className="beam beam-3"></div>
+            <div className="beam beam-4"></div>
+          </div>
+          
+          <div className="grid-overlay"></div>
+          
+          <div className="rotating-rings">
+            <div className="ring ring-1"></div>
+            <div className="ring ring-2"></div>
+            <div className="ring ring-3"></div>
+          </div>
+          
+          <div className="meteors">
+            <div className="meteor meteor-1"></div>
+            <div className="meteor meteor-2"></div>
+            <div className="meteor meteor-3"></div>
+          </div>
+        </div>
+        
+        {/* 页面头部 - 原内容保持不变 */}
         <section className="team-header">
           <h1>我们的团队</h1>
-          <p>一群热爱产品、追求极致的专业人</p>
+          <p>一群热爱产品、追求极致的专业人士</p>
           <div className="divider"></div>
         </section>
 
-        {/* 团队成员列表 */}
+        {/* 团队成员列表 - 原内容保持不变 */}
         <section className="team-members">
           <div className="members-grid">
             {teamMembers.map((member, index) => (
               <div className="member-card" key={index}>
-                <img src={member.avatar} alt={member.name} className="member-avatar" />
+                <div className="avatar-wrapper">
+                  <img 
+                    src={member.avatar} 
+                    alt={member.name} 
+                    className="member-avatar" 
+                  />
+                </div>
                 <h3>{member.name}</h3>
                 <p className="member-role">{member.role}</p>
                 <p className="member-desc">{member.desc}</p>
               </div>
             ))}
           </div>
-        </section>
-
-        {/* 团队理念 */}
-        <section className="team-idea">
-          <h2>团队理念</h2>
-          <p>
-            我们相信，优秀的产品来自优秀的团队协作。每个人都发挥自己的专业所长，
-            相互配合、相互启发，像苹果的研发团队一样，把细节做到极致，最终呈现出超出预期的产品。
-          </p>
         </section>
       </div>
     </div>

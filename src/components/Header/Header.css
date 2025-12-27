@@ -1,45 +1,152 @@
 /* src/components/Header/Header.css */
 .apple-header {
-  background-color: var(--apple-white);
-  border-bottom: 1px solid var(--apple-border);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(224, 225, 243, 0.8);
   padding: var(--spacing-sm) 0;
   position: sticky;
   top: 0;
-  z-index: 100; /* 固定在顶部 */
+  z-index: 100;
+  backdrop-filter: blur(16px);
+  box-shadow: 
+    0 4px 16px rgba(16, 24, 40, 0.04),
+    0 1px 0 rgba(10, 132, 255, 0.1);
+}
 
+/* 顶部渐变线 */
+.apple-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  opacity: 0.8;
+}
+
+/* 底部动态线 */
+.apple-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--apple-blue) 50%, 
+    transparent 100%);
+  opacity: 0.2;
 }
 
 .apple-header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .header-logo a {
   font-size: var(--font-lg);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--apple-black);
   text-decoration: none;
+  position: relative;
+  padding: 8px 16px;
+  display: inline-block;
 }
 
-.header-logo a:hover {
-  color: var(--apple-blue);
-  text-decoration: none;
+/* Logo 装饰框 */
+.header-logo a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-left-color: var(--apple-blue);
+  border-radius: 8px;
+  transition: all 280ms ease;
+}
+
+.header-logo a:hover::before {
+  border-color: var(--apple-blue);
+  box-shadow: 0 0 20px rgba(10, 132, 255, 0.2);
 }
 
 .header-nav {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xs);
+  align-items: center;
+  position: relative;
+  padding: 8px 0;
+}
+
+/* 导航背景框 */
+.header-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    rgba(10, 132, 255, 0.03) 0%, 
+    rgba(124, 92, 255, 0.03) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(224, 225, 243, 0.6);
 }
 
 .header-nav a {
   font-size: var(--font-sm);
   color: var(--apple-gray-light);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 220ms ease;
+  position: relative;
+  padding: 10px 20px;
+  z-index: 1;
+}
+
+/* 导航项分隔线 */
+.header-nav a + a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: linear-gradient(180deg, 
+    transparent 0%, 
+    var(--line-color) 50%, 
+    transparent 100%);
+}
+
+/* 下划动画 */
+.header-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
 }
 
 .header-nav a:hover {
   color: var(--apple-blue);
-  text-decoration: none;
+}
+
+.header-nav a:hover::after {
+  width: 60%;
+  left: 20%;
+}
+
+/* 活动状态 */
+.header-nav a.active {
+  color: var(--apple-blue);
+  background: rgba(10, 132, 255, 0.08);
+  border-radius: 8px;
+}
+
+.header-nav a.active::after {
+  width: 60%;
+  left: 20%;
 }

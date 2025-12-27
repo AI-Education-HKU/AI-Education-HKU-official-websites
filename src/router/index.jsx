@@ -6,7 +6,7 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Team from '../pages/Team';
 // 可选：如果后续要加“联系我们”页面，先预留，暂时用 Home 占位
-import Contact from '../pages/Home';
+import Contact from '../pages/Contact';
 
 // 配置路由规则：路径 → 对应页面组件
 const router = createBrowserRouter([

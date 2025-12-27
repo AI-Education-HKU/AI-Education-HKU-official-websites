@@ -1,1 +1,15 @@
-# 依赖文件夹（团队成员拉取后自行 npm install）node_modules/# 打包产物（部署时生成，不上传）build/# 本地环境变量（每个人配置不同）.env.env.local.env.development.local# PyCharm 配置文件（仅本地生效）.idea/# 系统缓存文件.DS_Store# 日志文件npm-debug.log*
+# 依赖文件夹（团队成员拉取后自行 npm install）
+node_modules/
+# 打包产物（部署时生成，不上传）
+build/
+# 本地环境变量（每个人配置不同）
+.env
+.env.local
+.env.development.local
+# PyCharm 配置文件（仅本地生效）
+.idea/
+# 系统缓存文件
+.DS_Store
+# 日志文件
+npm-debug.log*
+node_modules

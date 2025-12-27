@@ -1,16 +1,16 @@
 /* 苹果官网风格 - 全局基础样式 */
 :root {
   /* 苹果官网核心配色 */
-  --apple-white: #ffffff;          /* 主背景 */
-  --apple-black: #1d1d1f;          /* 主文字 */
-  --apple-gray-light: #86868b;     /* 辅助文字 */
-  --apple-gray: #6e6e73;           /* 分隔线/次要元素 */
-  --apple-gray-dark: #3a3a3c;      /* 深色背景 */
-  --apple-blue: #0071e3;           /* 强调色（按钮/链接） */
-  --apple-blue-hover: #0077ed;     /* 按钮hover */
-  --apple-border: #e6e6e6;         /* 轻量边框 */
+  --apple-white: #ffffff;
+  --apple-black: #1d1d1f;
+  --apple-gray-light: #86868b;
+  --apple-gray: #6e6e73;
+  --apple-gray-dark: #3a3a3c;
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+  --apple-border: #e6e6e6;
 
-  /* 间距规范（苹果官网统一间距） */
+  /* 间距规范 */
   --spacing-xs: 8px;
   --spacing-sm: 16px;
   --spacing-md: 24px;
@@ -25,6 +25,24 @@
   --font-lg: 24px;
   --font-xl: 32px;
   --font-xxl: 48px;
+
+  /* 线条感增强变量 */
+  --accent-2: #7C5CFF;
+  --accent-3: #FF6B9D;
+  --accent-4: #00D4AA;
+  --gradient-accent: linear-gradient(90deg, var(--apple-blue) 0%, var(--accent-2) 100%);
+  --line-weak: 1px;
+  --line-medium: 1.5px;
+  --line-strong: 2px;
+  --line-bold: 3px;
+  --line-color: #ECECF2;
+  --line-color-strong: #D1D5DB;
+  --line-accent: rgba(10, 132, 255, 0.2);
+  --glass-blur: 10px;
+  
+  /* 网格背景 */
+  --grid-size: 32px;
+  --grid-color: rgba(0, 0, 0, 0.02);
 }
 
 /* 全局重置 + 基础样式 */
@@ -40,87 +58,322 @@ body {
   color: var(--apple-black);
   font-size: var(--font-md);
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased; /* 苹果端字体抗锯齿 */
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* 文字层级（贴合苹果官网排版） */
-h1 {
-  font-size: var(--font-xxl);
-  font-weight: 300; /* 苹果标题用轻字重 */
-  line-height: 1.2;
-  color: var(--apple-black);
-  margin-bottom: var(--spacing-md);
+/* 多层背景装饰系统 */
+
+/* 第一层：精细网格 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  pointer-events: none;
+  z-index: 0;
 }
 
-h2 {
-  font-size: var(--font-xl);
-  font-weight: 300;
-  line-height: 1.25;
-  color: var(--apple-black);
-  margin-bottom: var(--spacing-sm);
+/* 第二层：大型光晕 */
+body::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  right: -20%;
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle, 
+    rgba(10, 132, 255, 0.08) 0%,
+    rgba(124, 92, 255, 0.05) 30%,
+    transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
 }
 
-h3 {
-  font-size: var(--font-lg);
-  font-weight: 400;
-  color: var(--apple-black);
-  margin-bottom: var(--spacing-xs);
+@keyframes float {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg); 
+    opacity: 0.6;
+  }
+  33% { 
+    transform: translate(-50px, 100px) rotate(120deg); 
+    opacity: 0.8;
+  }
+  66% { 
+    transform: translate(50px, -50px) rotate(240deg); 
+    opacity: 0.4;
+  }
 }
 
-p {
-  font-size: var(--font-md);
-  color: var(--apple-gray-light);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-sm);
+/* 主内容区域 */
+#root {
+  position: relative;
+  z-index: 1;
 }
 
-/* 链接样式（苹果风格） */
-a {
-  color: var(--apple-blue);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover {
-  color: var(--apple-blue-hover);
-  text-decoration: underline;
-}
-
-/* 按钮样式（苹果官网按钮） */
-.btn-apple {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: var(--apple-blue);
-  color: var(--apple-white);
-  border-radius: 9999px; /* 全圆角，苹果风格 */
-  font-size: var(--font-sm);
-  font-weight: 400;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.btn-apple:hover {
-  background-color: var(--apple-blue-hover);
-  text-decoration: none;
-}
-
-/* 容器（居中+最大宽度，贴合苹果官网布局） */
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
+/* 装饰背景容器 - 用于页面级背景 */
+.bg-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
 }
 
-/* 通用分隔线 */
-.divider {
+/* 渐变色块 1 - 左上角 */
+.bg-decoration::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, 
+    rgba(0, 212, 170, 0.1) 0%,
+    rgba(0, 212, 170, 0.05) 40%,
+    transparent 70%);
+  border-radius: 50%;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* 渐变色块 2 - 右下角 */
+.bg-decoration::after {
+  content: "";
+  position: absolute;
+  bottom: -15%;
+  right: -15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, 
+    rgba(255, 107, 157, 0.08) 0%,
+    rgba(255, 107, 157, 0.04) 40%,
+    transparent 70%);
+  border-radius: 50%;
+  animation: pulse 10s ease-in-out infinite reverse;
+}
+
+/* 几何图形装饰 */
+.geometric-shapes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 圆形 1 */
+.geometric-shapes .circle-1 {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  border: 2px solid rgba(10, 132, 255, 0.1);
+  border-radius: 50%;
+  animation: rotate 30s linear infinite;
+}
+
+/* 圆形 2 */
+.geometric-shapes .circle-2 {
+  position: absolute;
+  bottom: 20%;
+  right: 15%;
+  width: 400px;
+  height: 400px;
+  border: 2px dashed rgba(124, 92, 255, 0.08);
+  border-radius: 50%;
+  animation: rotate 40s linear infinite reverse;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 方形 */
+.geometric-shapes .square {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(0, 212, 170, 0.06);
+  animation: rotate-reverse 50s linear infinite;
+}
+
+@keyframes rotate-reverse {
+  from { transform: translate(-50%, -50%) rotate(45deg); }
+  to { transform: translate(-50%, -50%) rotate(405deg); }
+}
+
+/* 线条装饰 */
+.line-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.line-decorations .line {
+  position: absolute;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(10, 132, 255, 0.15) 50%, 
+    transparent 100%);
   height: 1px;
-  background-color: var(--apple-border);
-  margin: var(--spacing-lg) 0;
 }
 
-/* 页面通用外层容器 */
-.page-wrapper {
-  padding: var(--spacing-xl) 0;
+.line-decorations .line-1 {
+  top: 20%;
+  left: 0;
+  right: 0;
+  animation: slide-right 15s ease-in-out infinite;
 }
+
+.line-decorations .line-2 {
+  top: 60%;
+  left: 0;
+  right: 0;
+  animation: slide-left 20s ease-in-out infinite;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(124, 92, 255, 0.12) 50%, 
+    transparent 100%);
+}
+
+.line-decorations .line-3 {
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  animation: slide-right 25s ease-in-out infinite;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 212, 170, 0.1) 50%, 
+    transparent 100%);
+}
+
+@keyframes slide-right {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+@keyframes slide-left {
+  0%, 100% { transform: translateX(100%); }
+  50% { transform: translateX(-100%); }
+}
+
+/* 粒子效果 */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particles .particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, 
+    rgba(10, 132, 255, 0.6) 0%, 
+    transparent 70%);
+  border-radius: 50%;
+}
+
+.particles .particle:nth-child(1) {
+  top: 20%;
+  left: 15%;
+  animation: float-particle 8s ease-in-out infinite;
+}
+
+.particles .particle:nth-child(2) {
+  top: 50%;
+  right: 20%;
+  animation: float-particle 10s ease-in-out infinite 2s;
+  background: radial-gradient(circle, 
+    rgba(124, 92, 255, 0.5) 0%, 
+    transparent 70%);
+}
+
+.particles .particle:nth-child(3) {
+  bottom: 30%;
+  left: 25%;
+  animation: float-particle 12s ease-in-out infinite 4s;
+  background: radial-gradient(circle, 
+    rgba(0, 212, 170, 0.5) 0%, 
+    transparent 70%);
+}
+
+.particles .particle:nth-child(4) {
+  top: 70%;
+  right: 35%;
+  animation: float-particle 9s ease-in-out infinite 1s;
+  background: radial-gradient(circle, 
+    rgba(255, 107, 157, 0.4) 0%, 
+    transparent 70%);
+}
+
+.particles .particle:nth-child(5) {
+  top: 35%;
+  left: 60%;
+  animation: float-particle 11s ease-in-out infinite 3s;
+}
+
+@keyframes float-particle {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% { 
+    transform: translate(30px, -30px) scale(1.2);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translate(-20px, 20px) scale(0.8);
+    opacity: 0.4;
+  }
+  75% { 
+    transform: translate(40px, 40px) scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+/* 动画：流光移动 */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+

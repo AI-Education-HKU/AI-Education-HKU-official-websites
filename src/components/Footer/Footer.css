@@ -1,27 +1,144 @@
 /* src/components/Footer/Footer.css */
 .apple-footer {
-  background-color: var(--apple-white);
-  border-top: 1px solid var(--apple-border);
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0.7) 0%, 
+    rgba(245, 247, 255, 0.9) 100%);
+  border-top: 1px solid rgba(224, 225, 243, 0.8);
   padding: var(--spacing-xl) 0;
   margin-top: var(--spacing-xxl);
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+/* 顶部装饰线组 */
+.apple-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--apple-blue) 20%, 
+    var(--accent-2) 50%, 
+    var(--apple-blue) 80%, 
+    transparent 100%);
+  opacity: 0.4;
+}
+
+/* 底部装饰网格 */
+.apple-footer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-image: 
+    linear-gradient(to right, rgba(10, 132, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 132, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .footer-content {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-text {
   font-size: var(--font-xs);
   color: var(--apple-gray);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+  padding: var(--spacing-sm) 0;
+}
+
+/* 文本装饰线 */
+.footer-text::before,
+.footer-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    var(--gradient-accent),
+    transparent);
+}
+
+.footer-text::before {
+  left: 50%;
+  margin-left: calc(-200px - 50%);
+}
+
+.footer-text::after {
+  right: 50%;
+  margin-right: calc(-200px - 50%);
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--gradient-accent));
+}
+
+.footer-link {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  position: relative;
+  padding: var(--spacing-sm);
+}
+
+/* 链接容器背景 */
+.footer-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(224, 225, 243, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
 }
 
 .footer-link a {
   font-size: var(--font-xs);
   color: var(--apple-gray);
-  margin: 0 var(--spacing-xs);
+  position: relative;
+  padding: 8px 16px;
+  z-index: 1;
+  transition: all 220ms ease;
+}
+
+/* 链接分隔点 */
+.footer-link a + a::before {
+  content: "•";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--line-color-strong);
+}
+
+.footer-link a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-accent);
+  opacity: 0;
+  border-radius: 6px;
+  transition: opacity 220ms ease;
+  z-index: -1;
 }
 
 .footer-link a:hover {
-  color: var(--apple-blue);
+  color: var(--apple-white);
+}
+
+.footer-link a:hover::after {
+  opacity: 1;
 }
